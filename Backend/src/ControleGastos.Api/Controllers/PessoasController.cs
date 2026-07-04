@@ -1,4 +1,4 @@
-using ControleGastos.Api.Middleware;
+using ControleGastos.Api.Models;
 using ControleGastos.Application.DTOs.Pessoas;
 using ControleGastos.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
