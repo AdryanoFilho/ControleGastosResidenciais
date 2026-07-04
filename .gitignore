@@ -1,0 +1,30 @@
+# ===== .NET =====
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Banco de dados local (SQLite)
+*.db
+*.db-shm
+*.db-wal
+
+# ===== Node / Frontend =====
+node_modules/
+dist/
+*.local
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# ===== IDEs e SO =====
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== Ferramentas locais =====
+.claude/
