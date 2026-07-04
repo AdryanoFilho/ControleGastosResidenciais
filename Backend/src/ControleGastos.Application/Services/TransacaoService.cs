@@ -19,7 +19,7 @@ public sealed class TransacaoService(
         var pessoa = await pessoaRepository.ObterPorIdAsync(request.PessoaId!.Value, cancellationToken)
             ?? throw new NotFoundException("Pessoa não encontrada.");
 
-        // A entidade garante as regras de negócio, incluindo o bloqueio de receitas para menores de idade.
+        // a própria entidade barra receita de menor de idade
         var transacao = new Transacao(request.Descricao!, request.Valor!.Value, request.Tipo!.Value, pessoa);
         await transacaoRepository.AdicionarAsync(transacao, cancellationToken);
 

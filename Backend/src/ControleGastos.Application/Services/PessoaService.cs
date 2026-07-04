@@ -27,10 +27,7 @@ public sealed class PessoaService(
         return pessoas.Select(PessoaResponse.FromEntity).ToList();
     }
 
-    /// <summary>
-    /// Exclui a pessoa e, por consequência, todas as suas transações
-    /// (exclusão em cascata configurada no banco de dados).
-    /// </summary>
+    // as transações da pessoa saem junto (cascade configurado no banco)
     public async Task ExcluirAsync(int id, CancellationToken cancellationToken = default)
     {
         var pessoa = await pessoaRepository.ObterPorIdAsync(id, cancellationToken)

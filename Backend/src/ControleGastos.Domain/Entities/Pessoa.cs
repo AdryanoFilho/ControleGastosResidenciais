@@ -3,9 +3,6 @@ using ControleGastos.Domain.Exceptions;
 
 namespace ControleGastos.Domain.Entities;
 
-/// <summary>
-/// Pessoa responsável por movimentações financeiras da residência.
-/// </summary>
 public class Pessoa
 {
     public const int MaioridadeEmAnos = 18;
@@ -36,16 +33,13 @@ public class Pessoa
         Idade = idade;
     }
 
-    /// <summary>Construtor exigido pelo Entity Framework Core.</summary>
+    // EF Core
     private Pessoa()
     {
         Nome = string.Empty;
     }
 
-    /// <summary>
-    /// Indica se a pessoa pode registrar uma transação do tipo informado.
-    /// Menores de idade podem registrar apenas despesas.
-    /// </summary>
+    // menor de idade só pode registrar despesa
     public bool PodeRegistrar(TipoTransacao tipo) =>
         tipo == TipoTransacao.Despesa || !EhMenorDeIdade;
 

@@ -1,16 +1,16 @@
-# ===== .NET =====
+# .NET
 bin/
 obj/
 *.user
 *.suo
 .vs/
 
-# Banco de dados local (SQLite)
+# Banco de dados
 *.db
 *.db-shm
 *.db-wal
 
-# ===== Node / Frontend =====
+# Node / Frontend
 node_modules/
 dist/
 *.local
@@ -20,7 +20,7 @@ dist/
 .env.*
 !.env.example
 
-# ===== IDEs e SO =====
+# IDEs e SO
 .idea/
 .vscode/
 .DS_Store

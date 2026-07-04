@@ -4,9 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!-- Permite executar em máquinas que possuam apenas runtimes mais novos que o .NET 8 -->
+    <!-- deixa rodar em runtimes mais novos que o .NET 8 -->
     <RollForward>LatestMajor</RollForward>
-    <!-- Gera o XML de documentação consumido pelo Swagger -->
+    <!-- XML de documentação usado pelo Swagger -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591;1573</NoWarn>
   </PropertyGroup>

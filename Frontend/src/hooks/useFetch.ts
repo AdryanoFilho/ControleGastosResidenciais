@@ -8,10 +8,7 @@ export interface UseFetchResult<T> {
   refetch: () => Promise<void>;
 }
 
-/**
- * Encapsula o ciclo de vida de uma busca de dados (loading, erro e recarga),
- * ignorando respostas de requisições obsoletas quando um refetch é disparado.
- */
+// centraliza loading/erro/refetch; resposta de requisição antiga é descartada
 export function useFetch<T>(fetcher: () => Promise<T>): UseFetchResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);

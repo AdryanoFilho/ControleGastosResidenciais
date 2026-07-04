@@ -6,10 +6,7 @@ using FluentValidation;
 
 namespace ControleGastos.Api.Middleware;
 
-/// <summary>
-/// Captura qualquer exceção não tratada e a converte em uma resposta JSON padronizada:
-/// 400 para erros de validação e regras de negócio, 404 para recursos inexistentes e 500 para falhas inesperadas.
-/// </summary>
+// Converte qualquer exceção não tratada em uma resposta JSON padronizada (400, 404 ou 500).
 public sealed class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
 {
     private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);

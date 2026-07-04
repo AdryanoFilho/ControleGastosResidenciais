@@ -3,9 +3,6 @@ using ControleGastos.Domain.Exceptions;
 
 namespace ControleGastos.Domain.Entities;
 
-/// <summary>
-/// Movimentação financeira (receita ou despesa) pertencente a uma pessoa.
-/// </summary>
 public class Transacao
 {
     public const int DescricaoTamanhoMaximo = 200;
@@ -36,7 +33,7 @@ public class Transacao
         PessoaId = pessoa.Id;
     }
 
-    /// <summary>Construtor exigido pelo Entity Framework Core.</summary>
+    // EF Core
     private Transacao()
     {
         Descricao = string.Empty;

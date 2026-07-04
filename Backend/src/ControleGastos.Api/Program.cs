@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddControllers()
     .AddJsonOptions(options =>
-        // Serializa enums como texto ("Receita"/"Despesa"), mantendo a API autoexplicativa.
+        // enums como texto no JSON ("Receita"/"Despesa")
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddApplication();
@@ -40,8 +40,7 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// Aplica as migrations pendentes na inicialização, garantindo que a aplicação
-// funcione apenas executando o projeto (sem passos manuais de banco de dados).
+// aplica as migrations pendentes ao subir; o banco é criado sem passo manual
 using (var scope = app.Services.CreateScope())
 {
     scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();

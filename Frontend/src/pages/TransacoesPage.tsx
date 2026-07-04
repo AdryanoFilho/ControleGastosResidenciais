@@ -40,7 +40,7 @@ export function TransacoesPage() {
   const pessoaSelecionada = pessoas.find((pessoa) => pessoa.id === pessoaIdSelecionada);
   const pessoaEhMenor = pessoaSelecionada !== undefined && pessoaSelecionada.idade < MAIORIDADE_EM_ANOS;
 
-  // Espelha a regra de negócio do backend: menores de idade só cadastram despesas.
+  // mesma regra do backend: menor de idade só cadastra despesa
   useEffect(() => {
     if (pessoaEhMenor && tipoSelecionado === 'Receita') {
       setValue('tipo', 'Despesa');

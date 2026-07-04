@@ -3,7 +3,6 @@ using ControleGastos.Domain.Enums;
 
 namespace ControleGastos.Application.DTOs.Transacoes;
 
-/// <summary>Representação de uma transação retornada pela API.</summary>
 public sealed record TransacaoResponse(
     int Id,
     string Descricao,

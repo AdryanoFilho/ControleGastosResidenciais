@@ -9,8 +9,7 @@ namespace ControleGastos.Api.Controllers;
 [Produces("application/json")]
 public sealed class RelatoriosController(IRelatorioService relatorioService) : ControllerBase
 {
-    /// <summary>Consulta os totais de receitas, despesas e saldo por pessoa, com o total geral consolidado.</summary>
-    /// <response code="200">Relatório de totais.</response>
+    /// <summary>Totais de receitas, despesas e saldo por pessoa, com o total geral no fim.</summary>
     [HttpGet("totais")]
     [ProducesResponseType(typeof(RelatorioTotaisResponse), StatusCodes.Status200OK)]
     public async Task<ActionResult<RelatorioTotaisResponse>> ObterTotais(CancellationToken cancellationToken) =>

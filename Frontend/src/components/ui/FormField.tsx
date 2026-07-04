@@ -7,7 +7,6 @@ interface FormFieldProps {
   children: ReactNode;
 }
 
-/** Campo de formulário com rótulo e exibição padronizada de erro de validação. */
 export function FormField({ label, htmlFor, error, children }: FormFieldProps) {
   return (
     <div className="form-field">

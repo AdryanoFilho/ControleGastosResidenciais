@@ -10,11 +10,11 @@ namespace ControleGastos.Api.Controllers;
 [Produces("application/json")]
 public sealed class TransacoesController(ITransacaoService transacaoService) : ControllerBase
 {
-    /// <summary>Cadastra uma nova transação (receita ou despesa).</summary>
-    /// <remarks>Pessoas menores de 18 anos podem cadastrar apenas despesas.</remarks>
-    /// <response code="201">Transação cadastrada com sucesso.</response>
+    /// <summary>Cadastra uma transação (receita ou despesa).</summary>
+    /// <remarks>Menores de 18 anos só podem cadastrar despesas.</remarks>
+    /// <response code="201">Transação criada.</response>
     /// <response code="400">Dados inválidos ou regra de negócio violada.</response>
-    /// <response code="404">Pessoa informada não existe.</response>
+    /// <response code="404">Pessoa não encontrada.</response>
     [HttpPost]
     [ProducesResponseType(typeof(TransacaoResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(RespostaDeErro), StatusCodes.Status400BadRequest)]
@@ -25,8 +25,7 @@ public sealed class TransacoesController(ITransacaoService transacaoService) : C
         return StatusCode(StatusCodes.Status201Created, transacao);
     }
 
-    /// <summary>Lista todas as transações cadastradas.</summary>
-    /// <response code="200">Lista de transações.</response>
+    /// <summary>Lista as transações cadastradas.</summary>
     [HttpGet]
     [ProducesResponseType(typeof(IReadOnlyList<TransacaoResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<TransacaoResponse>>> Listar(CancellationToken cancellationToken) =>

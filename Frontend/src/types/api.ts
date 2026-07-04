@@ -1,4 +1,4 @@
-/** Formato padronizado de erro retornado pela API. */
+// formato de erro que a API devolve
 export interface RespostaDeErro {
   status: number;
   titulo: string;
