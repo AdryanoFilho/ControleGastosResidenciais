@@ -9,14 +9,28 @@ namespace ControleGastos.Application.Services;
 
 public sealed class PessoaService(
     IPessoaRepository pessoaRepository,
-    IValidator<CriarPessoaRequest> validator) : IPessoaService
+    IValidator<PessoaRequest> validator) : IPessoaService
 {
-    public async Task<PessoaResponse> CriarAsync(CriarPessoaRequest request, CancellationToken cancellationToken = default)
+    public async Task<PessoaResponse> CriarAsync(PessoaRequest request, CancellationToken cancellationToken = default)
     {
         await validator.ValidateAndThrowAsync(request, cancellationToken);
 
         var pessoa = new Pessoa(request.Nome!, request.Idade!.Value);
         await pessoaRepository.AdicionarAsync(pessoa, cancellationToken);
+
+        return PessoaResponse.FromEntity(pessoa);
+    }
+
+    public async Task<PessoaResponse> AtualizarAsync(int id, PessoaRequest request, CancellationToken cancellationToken = default)
+    {
+        await validator.ValidateAndThrowAsync(request, cancellationToken);
+
+        // carrega com as transações: a entidade valida se a nova idade é compatível com as receitas existentes
+        var pessoa = await pessoaRepository.ObterPorIdComTransacoesAsync(id, cancellationToken)
+            ?? throw new NotFoundException("Pessoa não encontrada.");
+
+        pessoa.Atualizar(request.Nome!, request.Idade!.Value);
+        await pessoaRepository.SalvarAlteracoesAsync(cancellationToken);
 
         return PessoaResponse.FromEntity(pessoa);
     }
@@ -27,7 +41,7 @@ public sealed class PessoaService(
         return pessoas.Select(PessoaResponse.FromEntity).ToList();
     }
 
-    // as transacoes da pessoa saem junto (cascade configurado no banco)
+    // as transações da pessoa saem junto (cascade configurado no banco)
     public async Task ExcluirAsync(int id, CancellationToken cancellationToken = default)
     {
         var pessoa = await pessoaRepository.ObterPorIdAsync(id, cancellationToken)

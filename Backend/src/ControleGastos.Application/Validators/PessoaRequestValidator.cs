@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace ControleGastos.Application.Validators;
 
-public sealed class CriarPessoaRequestValidator : AbstractValidator<CriarPessoaRequest>
+public sealed class PessoaRequestValidator : AbstractValidator<PessoaRequest>
 {
-    public CriarPessoaRequestValidator()
+    public PessoaRequestValidator()
     {
         RuleFor(request => request.Nome)
             .NotEmpty().WithMessage("O nome é obrigatório.")

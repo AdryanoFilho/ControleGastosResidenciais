@@ -10,6 +10,11 @@ public sealed class PessoaRepository(AppDbContext context) : IPessoaRepository
     public Task<Pessoa?> ObterPorIdAsync(int id, CancellationToken cancellationToken = default) =>
         context.Pessoas.FirstOrDefaultAsync(pessoa => pessoa.Id == id, cancellationToken);
 
+    public Task<Pessoa?> ObterPorIdComTransacoesAsync(int id, CancellationToken cancellationToken = default) =>
+        context.Pessoas
+            .Include(pessoa => pessoa.Transacoes)
+            .FirstOrDefaultAsync(pessoa => pessoa.Id == id, cancellationToken);
+
     public async Task<IReadOnlyList<Pessoa>> ObterTodasAsync(CancellationToken cancellationToken = default) =>
         await context.Pessoas
             .AsNoTracking()
@@ -28,6 +33,9 @@ public sealed class PessoaRepository(AppDbContext context) : IPessoaRepository
         context.Pessoas.Add(pessoa);
         await context.SaveChangesAsync(cancellationToken);
     }
+
+    public Task SalvarAlteracoesAsync(CancellationToken cancellationToken = default) =>
+        context.SaveChangesAsync(cancellationToken);
 
     public async Task RemoverAsync(Pessoa pessoa, CancellationToken cancellationToken = default)
     {

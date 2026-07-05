@@ -143,6 +143,7 @@ dotnet ef migrations add NomeDaMigration --project src/ControleGastos.Infrastruc
 | Descrição obrigatória (máx. 200), valor > 0 e tipo obrigatório | Validator + invariante da entidade `Transacao` |
 | Transação exige pessoa existente | `TransacaoService` (retorna **404** se a pessoa não existir) |
 | **Menores de 18 anos só cadastram despesas** (vale também na edição) | Entidade `Transacao` (domínio) — a UI também desabilita a opção "Receita" preventivamente |
+| Pessoa com receitas não pode ter a idade reduzida para menos de 18 anos | Entidade `Pessoa` (domínio), na atualização |
 | Excluir pessoa remove todas as suas transações | `DELETE CASCADE` configurado no banco via EF Core |
 | Persistência entre execuções | SQLite em arquivo |
 | Totais por pessoa + total geral (receitas, despesas, saldo) | Propriedades calculadas da entidade `Pessoa` + `RelatorioService` |
@@ -153,6 +154,7 @@ dotnet ef migrations add NomeDaMigration --project src/ControleGastos.Infrastruc
 |---|---|---|
 | `POST` | `/api/pessoas` | Cadastra uma pessoa |
 | `GET` | `/api/pessoas` | Lista as pessoas |
+| `PUT` | `/api/pessoas/{id}` | Atualiza uma pessoa |
 | `DELETE` | `/api/pessoas/{id}` | Exclui a pessoa e suas transações |
 | `POST` | `/api/transacoes` | Cadastra uma transação |
 | `GET` | `/api/transacoes` | Lista as transações |
@@ -192,7 +194,6 @@ Erros seguem um formato JSON padronizado, produzido por um middleware global:
 - Testes unitários (domínio e services) e de integração (WebApplicationFactory)
 - Paginação e filtros nas listagens
 - Agregação dos totais via SQL (quando o volume de dados justificar)
-- Edição de pessoas
 - Data/hora na transação e relatórios por período
 - Autenticação/autorização (ex.: perfis por morador)
 - CI com build, lint e testes automatizados

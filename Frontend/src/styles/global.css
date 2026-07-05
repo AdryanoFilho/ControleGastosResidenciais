@@ -309,7 +309,7 @@ body {
   flex: 1 1 220px;
 }
 
-.form--inline .btn {
+.form--inline .form__acoes {
   margin-top: 1.72rem;
 }
 
@@ -884,7 +884,7 @@ tbody tr.linha-detalhe:hover {
     padding: 1.4rem 1rem 2.5rem;
   }
 
-  .form--inline .btn {
+  .form--inline .form__acoes {
     margin-top: 0;
   }
 

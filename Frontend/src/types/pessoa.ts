@@ -4,7 +4,7 @@ export interface Pessoa {
   idade: number;
 }
 
-export interface CriarPessoaPayload {
+export interface PessoaPayload {
   nome: string;
   idade: number;
 }
