@@ -20,12 +20,13 @@ import type { Transacao } from '../types/transacao';
 
 const MAIORIDADE_EM_ANOS = 18;
 
+// o RHF não limpa inputs com undefined, então o estado "vazio" usa string vazia
 const FORMULARIO_VAZIO = {
   descricao: '',
-  valor: undefined,
-  tipo: 'Despesa' as const,
-  pessoaId: undefined,
-};
+  valor: '',
+  tipo: 'Despesa',
+  pessoaId: '',
+} as unknown as TransacaoFormData;
 
 export function TransacoesPage() {
   const { pessoas, isLoading: carregandoPessoas } = usePessoas();
