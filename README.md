@@ -30,7 +30,7 @@ Sistema para organizar as finanças de uma casa: cadastro dos moradores, registr
 
 ## Como rodar o backend
 
-Pré-requisito: [.NET SDK 8+]
+Pré-requisito: .NET SDK 8+
 
 ```bash
 cd Backend
@@ -39,7 +39,7 @@ dotnet run --project src/ControleGastos.Api
 
 ## Como rodar o frontend
 
-Pré-requisito: [Node.js 20+]
+Pré-requisito: Node.js 20+
 
 ```bash
 cd Frontend
@@ -51,12 +51,12 @@ npm run dev
 
 Algumas escolhas que fiz durante o desenvolvimento:
 
-- Backend organizado em camadas (Domain, Application, Infrastructure e Api), mantendo a regra de negócio concentrada no domínio, independente da interface que consumir a API.
-- FluentValidation para retornar mensagens de erro mais claras pro frontend.
-- SQLite pela simplicidade, sem exigir configuração extra pra rodar o projeto.
-- Cascade delete entre pessoas e transações, evitando registros órfãos no banco.
-- React Hook Form + Zod no frontend, pra lidar com formulários e validação sem complicação.
-- CSS puro na interface, priorizando controle sobre o layout sem dependências extras.
+- Backend organizado em camadas (Domain, Application, Infrastructure e Api).
+- Utilizei FluentValidation para retornar mensagens de erro mais claras pro frontend.
+- Escolhi o SQLite pela simplicidade, sem precisar de nada por fora.
+- Configurei a exclusão em cascata, ao excluir uma pessoa, suas transações são excluidas.
+- React Hook Form + Zod, para facilitar o gerenciamento e a validação dos formulários.
+- Desenvolvi utilizando CSS puro na interface, para melhor controle e sem dependências.
 
 ## Autor
 
