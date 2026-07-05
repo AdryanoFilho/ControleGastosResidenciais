@@ -9,7 +9,7 @@ export interface Transacao {
   nomePessoa: string;
 }
 
-export interface CriarTransacaoPayload {
+export interface TransacaoPayload {
   descricao: string;
   valor: number;
   tipo: TipoTransacao;

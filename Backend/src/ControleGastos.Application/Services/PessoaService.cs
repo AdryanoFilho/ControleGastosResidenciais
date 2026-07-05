@@ -27,7 +27,7 @@ public sealed class PessoaService(
         return pessoas.Select(PessoaResponse.FromEntity).ToList();
     }
 
-    // as transações da pessoa saem junto (cascade configurado no banco)
+    // as transacoes da pessoa saem junto (cascade configurado no banco)
     public async Task ExcluirAsync(int id, CancellationToken cancellationToken = default)
     {
         var pessoa = await pessoaRepository.ObterPorIdAsync(id, cancellationToken)

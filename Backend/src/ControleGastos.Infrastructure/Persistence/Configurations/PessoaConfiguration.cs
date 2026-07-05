@@ -19,7 +19,7 @@ public sealed class PessoaConfiguration : IEntityTypeConfiguration<Pessoa>
         builder.Property(pessoa => pessoa.Idade)
             .IsRequired();
 
-        // excluiu a pessoa, as transações dela saem junto
+        // excluiu a pessoa, as transacoes dela saem junto
         builder.HasMany(pessoa => pessoa.Transacoes)
             .WithOne(transacao => transacao.Pessoa!)
             .HasForeignKey(transacao => transacao.PessoaId)

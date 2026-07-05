@@ -6,7 +6,7 @@ using FluentValidation;
 
 namespace ControleGastos.Api.Middleware;
 
-// Converte qualquer exceção não tratada em uma resposta JSON padronizada (400, 404 ou 500).
+// converte qualquer excecao nao respondida em JSON padronizada (400, 404 ou 500)
 public sealed class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
 {
     private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);

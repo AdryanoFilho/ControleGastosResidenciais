@@ -13,7 +13,7 @@ namespace ControleGastos.Infrastructure.Persistence.Migrations
     [Migration("20260704195344_InitialCreate")]
     partial class InitialCreate
     {
-        /// <inheritdoc />
+        // <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

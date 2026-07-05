@@ -1,6 +1,6 @@
 namespace ControleGastos.Api.Models;
 
-// Formato único de erro da API.
+// formato unico de erro da API
 public sealed record RespostaDeErro(int Status, string Titulo, string? Detalhe, IDictionary<string, string[]>? Erros)
 {
     public static RespostaDeErro Validacao(IDictionary<string, string[]> erros) =>

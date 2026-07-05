@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace ControleGastos.Application.Validators;
 
-public sealed class CriarTransacaoRequestValidator : AbstractValidator<CriarTransacaoRequest>
+public sealed class TransacaoRequestValidator : AbstractValidator<TransacaoRequest>
 {
-    public CriarTransacaoRequestValidator()
+    public TransacaoRequestValidator()
     {
         RuleFor(request => request.Descricao)
             .NotEmpty().WithMessage("A descrição é obrigatória.")

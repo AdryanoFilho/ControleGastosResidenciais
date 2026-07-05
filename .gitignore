@@ -5,17 +5,17 @@ obj/
 *.suo
 .vs/
 
-# Banco de dados
+# banco de dados
 *.db
 *.db-shm
 *.db-wal
 
-# Node / Frontend
+# node / frontend
 node_modules/
 dist/
 *.local
 
-# Variáveis de ambiente
+# variaveis de ambiente
 .env
 .env.*
 !.env.example
@@ -26,5 +26,5 @@ dist/
 .DS_Store
 Thumbs.db
 
-# ===== Ferramentas locais =====
+# ferramentas locais
 .claude/

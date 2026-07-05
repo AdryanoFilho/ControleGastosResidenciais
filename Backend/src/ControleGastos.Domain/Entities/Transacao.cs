@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using ControleGastos.Domain.Enums;
 using ControleGastos.Domain.Exceptions;
 
@@ -16,6 +17,23 @@ public class Transacao
 
     public Transacao(string descricao, decimal valor, TipoTransacao tipo, Pessoa pessoa)
     {
+        DefinirDados(descricao, valor, tipo, pessoa);
+    }
+
+    // EF Core
+    private Transacao()
+    {
+        Descricao = string.Empty;
+    }
+
+    public void Atualizar(string descricao, decimal valor, TipoTransacao tipo, Pessoa pessoa)
+    {
+        DefinirDados(descricao, valor, tipo, pessoa);
+    }
+
+    [MemberNotNull(nameof(Descricao))]
+    private void DefinirDados(string descricao, decimal valor, TipoTransacao tipo, Pessoa pessoa)
+    {
         ArgumentNullException.ThrowIfNull(pessoa);
 
         DomainException.Garantir(!string.IsNullOrWhiteSpace(descricao), "A descrição da transação é obrigatória.");
@@ -31,11 +49,5 @@ public class Transacao
         Tipo = tipo;
         Pessoa = pessoa;
         PessoaId = pessoa.Id;
-    }
-
-    // EF Core
-    private Transacao()
-    {
-        Descricao = string.Empty;
     }
 }

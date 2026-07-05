@@ -20,7 +20,7 @@ public sealed class TransacaoConfiguration : IEntityTypeConfiguration<Transacao>
             .IsRequired()
             .HasPrecision(18, 2);
 
-        // gravado como texto pra ficar legível direto no banco
+        // gravado como texto pra ficar legivel direto no banco
         builder.Property(transacao => transacao.Tipo)
             .IsRequired()
             .HasConversion<string>()

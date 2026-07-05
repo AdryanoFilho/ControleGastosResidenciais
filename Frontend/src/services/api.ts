@@ -5,7 +5,7 @@ export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:5000/api',
 });
 
-// monta uma mensagem amigável a partir do erro da API (ou de falha de rede)
+// monta uma mensagem a partir do erro da API
 export function extrairMensagemDeErro(error: unknown): string {
   if (axios.isAxiosError<RespostaDeErro>(error)) {
     const dados = error.response?.data;

@@ -39,7 +39,7 @@ public class Pessoa
         Nome = string.Empty;
     }
 
-    // menor de idade só pode registrar despesa
+    // menor de idade so pode registrar despesa
     public bool PodeRegistrar(TipoTransacao tipo) =>
         tipo == TipoTransacao.Despesa || !EhMenorDeIdade;
 

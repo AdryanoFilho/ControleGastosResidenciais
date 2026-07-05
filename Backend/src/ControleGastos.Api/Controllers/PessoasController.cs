@@ -10,9 +10,9 @@ namespace ControleGastos.Api.Controllers;
 [Produces("application/json")]
 public sealed class PessoasController(IPessoaService pessoaService) : ControllerBase
 {
-    /// <summary>Cadastra uma pessoa.</summary>
-    /// <response code="201">Pessoa criada.</response>
-    /// <response code="400">Dados inválidos.</response>
+    // summary = cadastra uma pessoa
+    // code 201 = pessoa criada
+    // code 400 = dados invalidos
     [HttpPost]
     [ProducesResponseType(typeof(PessoaResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(RespostaDeErro), StatusCodes.Status400BadRequest)]
@@ -22,15 +22,15 @@ public sealed class PessoasController(IPessoaService pessoaService) : Controller
         return StatusCode(StatusCodes.Status201Created, pessoa);
     }
 
-    /// <summary>Lista as pessoas cadastradas.</summary>
+    // summary = lista as pessoas cadastradas
     [HttpGet]
     [ProducesResponseType(typeof(IReadOnlyList<PessoaResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<PessoaResponse>>> Listar(CancellationToken cancellationToken) =>
         Ok(await pessoaService.ListarAsync(cancellationToken));
 
-    /// <summary>Exclui a pessoa e todas as transações dela.</summary>
-    /// <response code="204">Pessoa excluída.</response>
-    /// <response code="404">Pessoa não encontrada.</response>
+    // summary = exclui a pessoa e todas as transacoes dela
+    // code 204 = pessoa excluida
+    // code 404 = pessoa nao encontrada
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(RespostaDeErro), StatusCodes.Status404NotFound)]

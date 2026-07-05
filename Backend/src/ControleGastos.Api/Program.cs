@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddControllers()
     .AddJsonOptions(options =>
-        // enums como texto no JSON ("Receita"/"Despesa")
+        // enums como texto no JSON
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddApplication();

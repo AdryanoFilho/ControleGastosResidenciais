@@ -8,7 +8,7 @@ export interface UseFetchResult<T> {
   refetch: () => Promise<void>;
 }
 
-// centraliza loading/erro/refetch; resposta de requisição antiga é descartada
+// centraliza loading/erro/refetch; resposta de requisicao antiga e descartada
 export function useFetch<T>(fetcher: () => Promise<T>): UseFetchResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);
