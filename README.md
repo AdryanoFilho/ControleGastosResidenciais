@@ -4,20 +4,19 @@ Sistema para organizar as finanças de uma casa: cadastro dos moradores, registr
 
 ## Funcionalidades
 
-- Cadastro, edição e exclusão de pessoas
-- Registro de receitas e despesas por pessoa, com edição e exclusão
-- Consulta de totais por pessoa e o total geral da casa, com o detalhe das transações de cada um
-- Dashboard com o resumo geral
-- Menores de 18 anos só podem registrar despesas (a regra vale também na edição)
-- Ao excluir uma pessoa, todas as transações dela são removidas juntas
-- Confirmação antes de excluir, mensagens de sucesso/erro e atualização automática das telas
-- Os dados ficam salvos em um banco SQLite local, então nada se perde ao fechar a aplicação
+- Gerenciamento de moradores
+- Cadastro de receitas e despesas
+- Consulta de totais por pessoa
+- Dashboard com resumo financeiro
+- Exclusão automática das transações ao remover uma pessoa
+- Regra que impede menores de idade de cadastrar receitas
+- Persistência dos dados em SQLite
 
 ## Tecnologias
 
-**Backend:** C#, .NET 8, ASP.NET Core Web API, Entity Framework Core, SQLite, FluentValidation e Swagger.
+**Backend:** C#, .NET 8, ASP.NET Core Web API, Entity Framework Core, SQLite.
 
-**Frontend:** React, TypeScript, Vite, Axios, React Hook Form, Zod e CSS puro.
+**Frontend:** React, TypeScript, Vite, React Hook Form, Zod, CSS.
 
 ## Screenshots
 
@@ -31,26 +30,22 @@ Sistema para organizar as finanças de uma casa: cadastro dos moradores, registr
 
 ## Como rodar o backend
 
-Pré-requisito: [.NET SDK 8+](https://dotnet.microsoft.com/download)
+Pré-requisito: [.NET SDK 8+]
 
 ```bash
 cd Backend
 dotnet run --project src/ControleGastos.Api
 ```
 
-A API sobe em `http://localhost:5000` e o Swagger fica em `http://localhost:5000/swagger`. O banco é criado sozinho na primeira execução.
-
 ## Como rodar o frontend
 
-Pré-requisito: [Node.js 20+](https://nodejs.org/)
+Pré-requisito: [Node.js 20+]
 
 ```bash
 cd Frontend
 npm install
 npm run dev
 ```
-
-Abre em `http://localhost:5173` (precisa da API rodando).
 
 ## Decisões técnicas
 
