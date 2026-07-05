@@ -14,7 +14,6 @@ import { extrairMensagemDeErro } from '../services/api';
 import { pessoaSchema, type PessoaFormData } from '../schemas/pessoaSchema';
 import type { Pessoa } from '../types/pessoa';
 
-// o RHF não limpa inputs com undefined, então o estado "vazio" usa string vazia
 const FORMULARIO_VAZIO = { nome: '', idade: '' } as unknown as PessoaFormData;
 
 export function PessoasPage() {

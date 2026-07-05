@@ -4,10 +4,8 @@
 
 namespace ControleGastos.Infrastructure.Persistence.Migrations
 {
-    // <inheritdoc />
     public partial class InitialCreate : Migration
     {
-        // <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -52,7 +50,6 @@ namespace ControleGastos.Infrastructure.Persistence.Migrations
                 column: "PessoaId");
         }
 
-        // <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

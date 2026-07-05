@@ -20,7 +20,6 @@ import type { Transacao } from '../types/transacao';
 
 const MAIORIDADE_EM_ANOS = 18;
 
-// o RHF não limpa inputs com undefined, então o estado "vazio" usa string vazia
 const FORMULARIO_VAZIO = {
   descricao: '',
   valor: '',
@@ -55,7 +54,7 @@ export function TransacoesPage() {
   const pessoaSelecionada = pessoas.find((pessoa) => pessoa.id === pessoaIdSelecionada);
   const pessoaEhMenor = pessoaSelecionada !== undefined && pessoaSelecionada.idade < MAIORIDADE_EM_ANOS;
 
-  // mesma regra do backend: menor de idade só cadastra despesa
+  // mesma regra do backend: menor de idade so cadastra despesa
   useEffect(() => {
     if (pessoaEhMenor && tipoSelecionado === 'Receita') {
       setValue('tipo', 'Despesa');

@@ -40,7 +40,7 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// aplica as migrations pendentes ao subir; o banco é criado sem passo manual
+// aplica as migrations pendentes ao subir; o banco e criado sem passo manual
 using (var scope = app.Services.CreateScope())
 {
     scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();

@@ -38,12 +38,12 @@ public class Pessoa
     {
         DefinirDados(nome, idade);
 
-        // não deixa a pessoa virar menor de idade se já tiver receitas cadastradas
+        // nao deixa a pessoa virar menor de idade se ja tiver receitas cadastradas
         DomainException.Garantir(!EhMenorDeIdade || TotalReceitas == 0,
             "A pessoa possui receitas cadastradas e não pode ter a idade alterada para menos de 18 anos.");
     }
 
-    // menor de idade só pode registrar despesa
+    // menor de idade so pode registrar despesa
     public bool PodeRegistrar(TipoTransacao tipo) =>
         tipo == TipoTransacao.Despesa || !EhMenorDeIdade;
 

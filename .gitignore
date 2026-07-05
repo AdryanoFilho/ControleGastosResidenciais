@@ -1,4 +1,4 @@
-# .NET
+# .net
 bin/
 obj/
 *.user
@@ -20,11 +20,8 @@ dist/
 .env.*
 !.env.example
 
-# IDEs e SO
+# ides e so
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
-
-# ferramentas locais
-.claude/

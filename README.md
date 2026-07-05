@@ -1,4 +1,4 @@
-# Controle de Gastos Residenciais
+# Sistema de Controle de Gastos Residenciais
 
 Sistema para organizar as finanças de uma casa: cadastro dos moradores, registro de receitas e despesas e consulta dos totais de cada um.
 
@@ -18,6 +18,16 @@ Sistema para organizar as finanças de uma casa: cadastro dos moradores, registr
 **Backend:** C#, .NET 8, ASP.NET Core Web API, Entity Framework Core, SQLite, FluentValidation e Swagger.
 
 **Frontend:** React, TypeScript, Vite, Axios, React Hook Form, Zod e CSS puro.
+
+## Screenshots
+
+![Dashboard](screenshots/dashboard.png)
+
+![Cadastro de Pessoas](screenshots/pessoas.png)
+
+![Transações](screenshots/transacoes.png)
+
+![Totais](screenshots/totais.png)
 
 ## Como rodar o backend
 
@@ -48,9 +58,16 @@ Algumas escolhas que fiz durante o desenvolvimento:
 
 - **Backend em camadas.** Dividi em Domain, Application, Infrastructure e Api. Pode parecer exagero para um CRUD, mas deixou cada coisa no seu lugar: regra de negócio não se mistura com banco nem com HTTP.
 - **Regras dentro das entidades.** A regra do menor de idade, por exemplo, vive no construtor de `Transacao`. Não existe caminho no código que crie uma receita para um menor, nem se alguém esquecer de validar em outra tela.
-- **Validação em duas camadas.** O FluentValidation devolve mensagens amigáveis por campo para o formulário, e a entidade garante que nada inválido chega ao banco. Parece repetido, mas cada uma protege uma coisa diferente.
+- **Validação em duas camadas.** O FluentValidation devolve mensagens por campo para o formulário, e a entidade garante que nada inválido chega ao banco. Parece repetido, mas cada uma protege uma coisa diferente.
 - **SQLite** porque não precisa instalar nada: rodou o projeto, o banco aparece. As migrations são aplicadas automaticamente na inicialização.
 - **Exclusão em cascata no próprio banco.** Apagar uma pessoa remove as transações via `ON DELETE CASCADE`, sem depender de ninguém lembrar disso no código.
 - **Erros padronizados.** Um middleware converte qualquer exceção em um JSON com status 400, 404 ou 500 — o front só lê a mensagem e mostra o aviso.
 - **CSS na mão.** Preferi não usar biblioteca de componentes; com CSS puro e variáveis o projeto ficou leve e com o visual do jeito que eu queria.
 - **A regra do menor também aparece na interface** (a opção "Receita" fica desabilitada), mas quem garante mesmo é o backend.
+
+## Autor
+
+Adryano de Oliveira Cavalcanti Filho
+
+GitHub:
+https://github.com/AdryanoFilho

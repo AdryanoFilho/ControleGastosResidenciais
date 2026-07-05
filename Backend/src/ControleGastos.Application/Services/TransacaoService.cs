@@ -17,7 +17,7 @@ public sealed class TransacaoService(
         await validator.ValidateAndThrowAsync(request, cancellationToken);
         var pessoa = await ObterPessoaAsync(request.PessoaId!.Value, cancellationToken);
 
-        // a própria entidade barra receita de menor de idade
+        // a propria entidade barra receita de menor de idade
         var transacao = new Transacao(request.Descricao!, request.Valor!.Value, request.Tipo!.Value, pessoa);
         await transacaoRepository.AdicionarAsync(transacao, cancellationToken);
 

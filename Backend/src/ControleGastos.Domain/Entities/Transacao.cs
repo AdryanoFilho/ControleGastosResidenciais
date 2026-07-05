@@ -20,7 +20,7 @@ public class Transacao
         DefinirDados(descricao, valor, tipo, pessoa);
     }
 
-    // EF Core
+    // ef core
     private Transacao()
     {
         Descricao = string.Empty;

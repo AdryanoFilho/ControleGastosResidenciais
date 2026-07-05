@@ -25,7 +25,7 @@ public sealed class PessoaService(
     {
         await validator.ValidateAndThrowAsync(request, cancellationToken);
 
-        // carrega com as transações: a entidade valida se a nova idade é compatível com as receitas existentes
+        // carrega com as transacoes: a entidade valida se a nova idade e compatível com as receitas existentes
         var pessoa = await pessoaRepository.ObterPorIdComTransacoesAsync(id, cancellationToken)
             ?? throw new NotFoundException("Pessoa não encontrada.");
 
@@ -41,7 +41,7 @@ public sealed class PessoaService(
         return pessoas.Select(PessoaResponse.FromEntity).ToList();
     }
 
-    // as transações da pessoa saem junto (cascade configurado no banco)
+    // as transacoes da pessoa saem junto (cascade configurado no banco)
     public async Task ExcluirAsync(int id, CancellationToken cancellationToken = default)
     {
         var pessoa = await pessoaRepository.ObterPorIdAsync(id, cancellationToken)
