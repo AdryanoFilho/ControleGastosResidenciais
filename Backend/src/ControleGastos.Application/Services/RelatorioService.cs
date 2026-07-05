@@ -16,7 +16,12 @@ public sealed class RelatorioService(IPessoaRepository pessoaRepository) : IRela
                 pessoa.Nome,
                 pessoa.TotalReceitas,
                 pessoa.TotalDespesas,
-                pessoa.Saldo))
+                pessoa.Saldo,
+                pessoa.Transacoes
+                    .OrderByDescending(transacao => transacao.Id)
+                    .Select(transacao => new TransacaoResumoResponse(
+                        transacao.Id, transacao.Descricao, transacao.Tipo, transacao.Valor))
+                    .ToList()))
             .ToList();
 
         var totaisGerais = new TotaisGeraisResponse(
